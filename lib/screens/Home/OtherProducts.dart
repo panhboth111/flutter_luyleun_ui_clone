@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
 
 class OtherProducts extends StatelessWidget {
-  Widget getProductCard(double pic_height, double card_width) {
-    return Card(
-        child: Container(
+  Widget _getProductCard(double card_width, String title) {
+    return Container(
       width: card_width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Card(
+          child: Column(
         children: [
-          Container(height: pic_height, color: Colors.blue),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: Center(child: Text("P2P services")),
-          )
+          Flexible(
+            child: Container(color: Colors.deepPurple),
+            flex: 3,
+          ),
+          Flexible(
+            child: Container(
+              child: Center(child: Text(title)),
+            ),
+            flex: 2,
+          ),
         ],
-      ),
-    ));
+      )),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    double pic_height = MediaQuery.of(context).size.height * 14 / 100;
+    double card_height = MediaQuery.of(context).size.height * 23 / 100;
     double card_width = MediaQuery.of(context).size.width * 45 / 100;
     return Container(
       margin: EdgeInsets.only(top: 20),
@@ -37,13 +41,13 @@ class OtherProducts extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 20.0),
-            height: 200.0,
+            height: card_height,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                getProductCard(pic_height, card_width),
-                getProductCard(pic_height, card_width),
-                getProductCard(pic_height, card_width),
+                _getProductCard(card_width, "P2P Services"),
+                _getProductCard(card_width, "LUYLEUN Shopping"),
+                _getProductCard(card_width, "Salary Advance"),
               ],
             ),
           ),

@@ -17,25 +17,31 @@ class Articles extends StatelessWidget {
         "2021-05-12"),
   ];
 
-  Widget getProductCard(
-      double pic_height, double card_width, ArticleModel article) {
-    return Card(
-        child: Container(
+  Widget getProductCard(double card_width, ArticleModel article) {
+    return Container(
       width: card_width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Card(
+          child: Column(
         children: [
-          Container(height: pic_height, color: Colors.blue),
-          Container(
-            margin: EdgeInsets.all(20),
-            child: Text(
-              article.title,
-              overflow: TextOverflow.ellipsis,
+          Flexible(
+            child: Container(color: Colors.deepPurple),
+            flex: 3,
+          ),
+          Flexible(
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Center(
+                  child: Text(
+                article.title,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+              )),
             ),
-          )
+            flex: 2,
+          ),
         ],
-      ),
-    ));
+      )),
+    );
   }
 
   @override
@@ -62,7 +68,7 @@ class Articles extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: this
                   .articles
-                  .map((a) => getProductCard(pic_height, card_width, a))
+                  .map((a) => getProductCard(card_width, a))
                   .toList(),
               // children: [
               //   getProductCard(pic_height, card_width),
